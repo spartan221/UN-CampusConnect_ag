@@ -8,9 +8,9 @@ import {
 	categoryMutations,
 	categoryQueries,
 	categoryTypeDef
-} from './swarch2023i/categories/typeDefs';
+} from './un-campusconnect/categories/typeDefs';
 
-import categoryResolvers from './swarch2023i/categories/resolvers';
+import categoryResolvers from './un-campusconnect/categories/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
