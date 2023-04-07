@@ -10,7 +10,7 @@
     "test": "run-s eslint",
     "start": "run-s prepublish runServer",
     "runServer": "node lib/index.js",
-    "dev": "npm run prepublish; npm run start",
+    "dev": "run-s prepublish runDevServer",
     "runDevServer": "nodemon lib/index.js"
   },
   "lint-staged": {
