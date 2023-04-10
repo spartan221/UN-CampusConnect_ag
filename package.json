@@ -10,8 +10,7 @@
     "test": "run-s eslint",
     "start": "run-s prepublish runServer",
     "runServer": "node lib/index.js",
-    "dev": "run-s prepublish runDevServer",
-    "runDevServer": "nodemon lib/index.js"
+    "dev": "nodemon src/index.js --exec babel-node"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
@@ -37,6 +36,9 @@
     "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.21.4",
     "eslint": "^4.16.0",
     "eslint-config-cheminfo": "^1.14.1",
     "eslint-plugin-import": "^2.8.0",

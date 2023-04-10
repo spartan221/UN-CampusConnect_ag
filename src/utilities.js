@@ -9,15 +9,26 @@ import { formatError } from 'graphql';
  * @param {boolean} [fullResponse]
  * @return {Promise.<*>} - promise with the error or the response object
  */
-export async function generalRequest(url, method, body, fullResponse) {
-	const parameters = {
+export async function generalRequest({ url, method, body, fullResponse, token }) {
+	let parameters = {
 		method,
 		uri: encodeURI(url),
 		body,
 		json: true,
-		resolveWithFullResponse: fullResponse
+		resolveWithFullResponse: fullResponse,
+
 	};
-	if (process.env.SHOW_URLS) {
+
+	if (token) {
+		parameters = {
+			...parameters, headers: {
+				'x-access-token': token,
+				'Content-Type': 'application/json'
+			}
+		}
+	}
+	
+	if (process.env.SHOW_URLS || true) {
 		// eslint-disable-next-line
 		console.log(url);
 	}
@@ -25,6 +36,7 @@ export async function generalRequest(url, method, body, fullResponse) {
 	try {
 		return await request(parameters);
 	} catch (err) {
+		// throw new Error('test');
 		return err;
 	}
 }
@@ -73,9 +85,13 @@ export function getRequest(url, path, parameters) {
  * @return {string}
  */
 export function mergeSchemas(typeDefs, queries, mutations) {
-	return `${typeDefs.join('\n')}
-    type Query { ${queries.join('\n')} }
-    type Mutation { ${mutations.join('\n')} }`;
+	let mergedSchemas = '';
+
+	if (typeDefs) mergedSchemas += `${typeDefs.join('\n')}`;
+	if (queries) mergedSchemas += `type Query { ${queries.join('\n')} }`;
+	if (mutations) mergedSchemas += `type Mutation { ${mutations.join('\n')} }`;
+
+	return mergedSchemas;
 }
 
 export function formatErr(error) {
@@ -84,6 +100,7 @@ export function formatErr(error) {
 	if (originalError && originalError.error) {
 		const { path } = data;
 		const { error: { id: message, code, description } } = originalError;
+		// const [message, code, description] = ['esto', 'es', 'una prueba'];
 		return { message, code, description, path };
 	}
 	return data;

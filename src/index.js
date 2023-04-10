@@ -19,7 +19,7 @@ app.use(koaCors());
 // read token from header
 app.use(async (ctx, next) => {
   if (ctx.header.authorization) {
-    const token = ctx.header.authorization.match(/Bearer ([A-Za-z0-9]+)/);
+    const token = ctx.header.authorization.match(/Bearer ([\w-]+\.[\w-]+\.[\w-]+)/);
     if (token && token[1]) {
       ctx.state.token = token[1];
     }
@@ -31,7 +31,8 @@ app.use(async (ctx, next) => {
 const graphql = graphqlKoa((ctx) => ({
   schema: graphQLSchema,
   context: { token: ctx.state.token },
-  formatError: formatErr
+  formatError: formatErr,
+  debug: process.env.DEBUG || false 
 }));
 router.post('/graphql', koaBody(), graphql);
 router.get('/graphql', graphql);

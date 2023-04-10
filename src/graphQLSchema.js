@@ -5,24 +5,33 @@ import { makeExecutableSchema } from 'graphql-tools';
 import { mergeSchemas } from './utilities';
 
 import {
-	categoryMutations,
-	categoryQueries,
-	categoryTypeDef
-} from './un-campusconnect/categories/typeDefs';
+	userTypeDef,
+	userQueries,
+	userMutations
+} from './un-campusconnect/authentication/user-services/typeDefs';
 
-import categoryResolvers from './un-campusconnect/categories/resolvers';
+import {
+	authTypeDef,
+	authQueries,
+	authMutations
+} from './un-campusconnect/authentication/auth-services/typeDefs';
+
+import userResolvers from './un-campusconnect/authentication/user-services/resolvers';
+import authResolvers from './un-campusconnect/authentication/auth-services/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
-		categoryTypeDef
+		userTypeDef,
 	],
 	[
-		categoryQueries
+		userQueries,
+		authQueries
 	],
 	[
-		categoryMutations
+		userMutations,
+		authMutations
 	]
 );
 
@@ -31,6 +40,7 @@ export default makeExecutableSchema({
 	typeDefs: mergedTypeDefs,
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
-		categoryResolvers
+		userResolvers,
+		authResolvers
 	)
 });
