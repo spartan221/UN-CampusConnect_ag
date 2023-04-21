@@ -17,8 +17,9 @@ export const userTypeDef = `
     }
 `;
 export const userQueries = `
-    getUserInfo: User!
+    getMyInfo: User!
     getUsers: [User]!
+    getUserInfo(id: String!): User!
 `;
 export const userMutations = `
     unsubscribe: String!

@@ -1,2 +1,5 @@
-export const url = '127.0.0.1'
-export const port = '3000'
+import * as dotenv from 'dotenv';
+dotenv.config({debug: true});
+
+export const url = process.env.AUTH_MS_URL;
+export const port = process.env.AUTH_MS_PORT;

@@ -11,4 +11,8 @@ RUN npm install
 COPY . /un-campusconnect_ag/
 RUN npm run prepublish
 
+# ENV variables
+ENV AUTH_MS_URL=127.0.0.1
+ENV AUTH_MS_PORT=3000
+
 CMD [ "npm", "run", "runServer" ]
