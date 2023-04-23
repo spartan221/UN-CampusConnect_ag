@@ -1,5 +1,5 @@
 import { generalRequest } from '../../../utilities';
-import { url, port } from '../server';
+import { AUTH_MS_URL as url, AUTH_MS_PORT as port } from '../../../server';
 import { entryPoint } from './entryPoint';
 
 const URL = `http://${url}:${port}/${entryPoint}`;
