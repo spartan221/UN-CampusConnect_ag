@@ -16,22 +16,32 @@ import {
 	authMutations
 } from './un-campusconnect/authentication/auth-services/typeDefs';
 
+import {
+	callTypeDef,
+	callQueries,
+	callMutations
+} from './un-campusconnect/call/typeDefs';
+
 import userResolvers from './un-campusconnect/authentication/user-services/resolvers';
 import authResolvers from './un-campusconnect/authentication/auth-services/resolvers';
+import callResolvers from './un-campusconnect/call/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
 		userTypeDef,
+		callTypeDef ,
 	],
 	[
 		userQueries,
-		authQueries
+		authQueries,
+		callQueries
 	],
 	[
 		userMutations,
-		authMutations
+		authMutations,
+		callMutations
 	]
 );
 
@@ -41,6 +51,7 @@ export default makeExecutableSchema({
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
 		userResolvers,
-		authResolvers
+		authResolvers,
+		callResolvers
 	)
 });

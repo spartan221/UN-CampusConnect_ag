@@ -14,5 +14,8 @@ RUN npm run prepublish
 # ENV variables
 ENV AUTH_MS_URL=127.0.0.1
 ENV AUTH_MS_PORT=3000
+ENV CALL_MS_URL=127.0.0.1
+ENV CALL_MS_PORT=8080
+
 
 CMD [ "npm", "run", "runServer" ]
