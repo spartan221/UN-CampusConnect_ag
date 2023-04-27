@@ -4,4 +4,4 @@ FROM node:carbon-slim
 WORKDIR /app
 
 # Start the application
-CMD ["./start.bat"]
+CMD ["start.bat"]
