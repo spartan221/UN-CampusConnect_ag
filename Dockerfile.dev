@@ -3,11 +3,5 @@ FROM node:carbon-slim
 # Set the working directory to /app (similar to cd)
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files to the container
-COPY package.json /app/
-
-# Install dependencies
-RUN npm install
-
 # Start the application
 CMD ["npm", "run", "dev"]
