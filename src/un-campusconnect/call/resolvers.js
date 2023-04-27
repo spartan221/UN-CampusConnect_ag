@@ -23,10 +23,9 @@ const resolvers = {
         closeCall: (_, {id}) =>
             generalRequest({ url: `${URL}/updateStatus/${id}`, method:'PUT'})
         ,
-        //deleteCall: (_, args, context) => {
-            //const {id} = args
-            //generalRequest({ url: `${URL}/deleteCall/${id}`, method:'DELETE', token:context.token })
-        //},
+        deleteCall: (_, {id}) => 
+            generalRequest({ url: `${URL}/deleteCall/${id}`, method:'DELETE'})
+        ,
 		updateCall: (_, {Call: { maximunParticipants, nameGroup, place, schedule,deadline,status,participants },id}) =>
             generalRequest({ url: `${URL}/updateCall/${id}`, method:'PUT',body: { maximunParticipants, nameGroup, place, schedule,deadline,status,participants }})
         ,

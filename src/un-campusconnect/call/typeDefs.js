@@ -37,5 +37,5 @@ export const callMutations = `
     closeCall(id: String!): Call
     updateCall(Call: CallInput!,id: String! ): Call
     addCall(Call: CallInput!): Call
-
+    deleteCall(id: String!):Call
 `
