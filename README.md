@@ -6,4 +6,4 @@ _Nota: Donde está **/home/ivanm/Documents/UN-CampusConnect_ag/** deben poner la
 
 
 # Ejemplo de ejecutar el contenedor en windows
-`docker run -p 5000:5000 --rm -v C:\Users\danie\Downloads\UN-CampusConnect_ag\:/app/ --name un-campusconnect_ag-dev un-campusconnect_ag-dev`
+`docker run -p 5000:5000 -v C:\Users\danie\Downloads\UN-CampusConnect_ag\:/app/ --name un-campusconnect_ag-dev un-campusconnect_ag-dev`
