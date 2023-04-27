@@ -1,0 +1,7 @@
+FROM node:carbon-slim
+
+# Set the working directory to /app (similar to cd)
+WORKDIR /app
+
+# Start the application
+CMD ["./start.bat"]
