@@ -1,1 +1,1 @@
-export const entryPoint = 'api/tutorprofile'
+export const entryPoint = 'tutors'
