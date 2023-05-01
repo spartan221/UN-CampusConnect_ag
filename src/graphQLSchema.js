@@ -22,9 +22,16 @@ import {
 	callMutations
 } from './un-campusconnect/call/typeDefs';
 
+import {
+	tutorprofileTypeDef,
+	tutorprofileQueries,
+	tutorprofileMutations
+} from './un-campusconnect/tutorprofile/typeDefs';
+
 import userResolvers from './un-campusconnect/authentication/user-services/resolvers';
 import authResolvers from './un-campusconnect/authentication/auth-services/resolvers';
 import callResolvers from './un-campusconnect/call/resolvers';
+import tutorprofileResolvers from './un-campusconnect/tutorprofile/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -32,17 +39,20 @@ const mergedTypeDefs = mergeSchemas(
 		'scalar JSON',
 		userTypeDef,
 		callTypeDef ,
+		tutorprofileTypeDef
 	],
 	[
 		userQueries,
 		authQueries,
-		callQueries
+		callQueries,
+		tutorprofileQueries
 	],
 	[
 		userMutations,
 		authMutations,
-		callMutations
-	]
+		callMutations,
+		tutorprofileMutations
+	],
 );
 
 // Generate the schema object from your types definition.
@@ -52,6 +62,7 @@ export default makeExecutableSchema({
 		{ JSON: GraphQLJSON }, // allows scalar JSON
 		userResolvers,
 		authResolvers,
-		callResolvers
+		callResolvers,
+		tutorprofileResolvers
 	)
 });
