@@ -7,3 +7,5 @@ export const CALL_MS_URL = process.env.CALL_MS_URL;
 export const CALL_MS_PORT = process.env.CALL_MS_PORT;
 export const BIENESTAR_MS_URL = process.env.BIENESTAR_MS_URL;
 export const BIENESTAR_MS_PORT = process.env.BIENESTAR_MS_PORT;
+export const TUTORPROFILE_MS_URL = process.env.TUTORPROFILE_MS_URL;
+export const TUTORPROFILE_MS_PORT = process.env.TUTORPROFILE_MS_PORT;

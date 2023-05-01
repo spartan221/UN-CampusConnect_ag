@@ -28,11 +28,17 @@ import {
 	bienestarMutations
 } from './un-campusconnect/bienestar/typeDefs';
 
+import {
+	tutorprofileTypeDef,
+	tutorprofileQueries,
+	tutorprofileMutations
+} from './un-campusconnect/tutorprofile/typeDefs';
+
 import userResolvers from './un-campusconnect/authentication/user-services/resolvers';
 import authResolvers from './un-campusconnect/authentication/auth-services/resolvers';
 import callResolvers from './un-campusconnect/call/resolvers';
 import bienestarResolvers from './un-campusconnect/bienestar/resolvers';
-
+import tutorprofileResolvers from './un-campusconnect/tutorprofile/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -41,19 +47,22 @@ const mergedTypeDefs = mergeSchemas(
 		userTypeDef,
 		callTypeDef ,
 		bienestarTypeDef,
+		tutorprofileTypeDef
 	],
 	[
 		userQueries,
 		authQueries,
 		callQueries,
-		bienestarQueries
+		bienestarQueries,
+		tutorprofileQueries
 	],
 	[
 		userMutations,
 		authMutations,
 		callMutations,
-		bienestarMutations
-	]
+		bienestarMutations,
+		tutorprofileMutations
+	],
 );
 
 // Generate the schema object from your types definition.
@@ -64,6 +73,7 @@ export default makeExecutableSchema({
 		userResolvers,
 		authResolvers,
 		callResolvers,
-		bienestarResolvers
+		bienestarResolvers,
+		tutorprofileResolvers
 	)
 });
