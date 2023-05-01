@@ -22,9 +22,17 @@ import {
 	callMutations
 } from './un-campusconnect/call/typeDefs';
 
+import {
+	bienestarTypeDef,
+	bienestarQueries,
+	bienestarMutations
+} from './un-campusconnect/bienestar/typeDefs';
+
 import userResolvers from './un-campusconnect/authentication/user-services/resolvers';
 import authResolvers from './un-campusconnect/authentication/auth-services/resolvers';
 import callResolvers from './un-campusconnect/call/resolvers';
+import bienestarResolvers from './un-campusconnect/bienestar/resolvers';
+
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -32,16 +40,19 @@ const mergedTypeDefs = mergeSchemas(
 		'scalar JSON',
 		userTypeDef,
 		callTypeDef ,
+		bienestarTypeDef,
 	],
 	[
 		userQueries,
 		authQueries,
-		callQueries
+		callQueries,
+		bienestarQueries
 	],
 	[
 		userMutations,
 		authMutations,
-		callMutations
+		callMutations,
+		bienestarMutations
 	]
 );
 
@@ -52,6 +63,7 @@ export default makeExecutableSchema({
 		{ JSON: GraphQLJSON }, // allows scalar JSON
 		userResolvers,
 		authResolvers,
-		callResolvers
+		callResolvers,
+		bienestarResolvers
 	)
 });
