@@ -9,3 +9,5 @@ export const BIENESTAR_MS_URL = process.env.BIENESTAR_MS_URL;
 export const BIENESTAR_MS_PORT = process.env.BIENESTAR_MS_PORT;
 export const TUTORPROFILE_MS_URL = process.env.TUTORPROFILE_MS_URL;
 export const TUTORPROFILE_MS_PORT = process.env.TUTORPROFILE_MS_PORT;
+export const SUBJECT_MS_URL = process.env.SUBJECT_MS_URL;
+export const SUBJECT_MS_PORT = process.env.SUBJECT_MS_PORT;
