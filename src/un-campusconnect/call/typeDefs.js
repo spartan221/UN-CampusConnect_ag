@@ -33,7 +33,7 @@ export const callQueries = `
 `;
 
 export const callMutations = `
-    enrollmentCall(email: String!, id: String!): Call
+    enrollmentCall( id: String!): Call
     closeCall(id: String!): Call
     updateCall(Call: CallInput!,id: String! ): Call
     addCall(Call: CallInput!): Call
