@@ -34,11 +34,18 @@ import {
 	tutorprofileMutations
 } from './un-campusconnect/tutorprofile/typeDefs';
 
+import {
+	calendarTypeDef,
+	calendarQueries,
+	calendarMutations
+} from './un-campusconnect/calendar/typeDefs';
+
 import userResolvers from './un-campusconnect/authentication/user-services/resolvers';
 import authResolvers from './un-campusconnect/authentication/auth-services/resolvers';
 import callResolvers from './un-campusconnect/call/resolvers';
 import bienestarResolvers from './un-campusconnect/bienestar/resolvers';
 import tutorprofileResolvers from './un-campusconnect/tutorprofile/resolvers';
+import calendarResolvers from './un-campusconnect/calendar/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -47,21 +54,24 @@ const mergedTypeDefs = mergeSchemas(
 		userTypeDef,
 		callTypeDef ,
 		bienestarTypeDef,
-		tutorprofileTypeDef
+		tutorprofileTypeDef,
+		calendarTypeDef
 	],
 	[
 		userQueries,
 		authQueries,
 		callQueries,
 		bienestarQueries,
-		tutorprofileQueries
+		tutorprofileQueries,
+		calendarQueries
 	],
 	[
 		userMutations,
 		authMutations,
 		callMutations,
 		bienestarMutations,
-		tutorprofileMutations
+		tutorprofileMutations,
+		calendarMutations
 	],
 );
 
@@ -74,6 +84,7 @@ export default makeExecutableSchema({
 		authResolvers,
 		callResolvers,
 		bienestarResolvers,
-		tutorprofileResolvers
+		tutorprofileResolvers,
+		calendarResolvers
 	)
 });

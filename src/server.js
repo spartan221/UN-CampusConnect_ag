@@ -11,3 +11,5 @@ export const TUTORPROFILE_MS_URL = process.env.TUTORPROFILE_MS_URL;
 export const TUTORPROFILE_MS_PORT = process.env.TUTORPROFILE_MS_PORT;
 export const SUBJECT_MS_URL = process.env.SUBJECT_MS_URL;
 export const SUBJECT_MS_PORT = process.env.SUBJECT_MS_PORT;
+export const CALENDAR_MS_URL = process.env.CALENDAR_MS_URL;
+export const CALENDAR_MS_PORT = process.env.CALENDAR_MS_PORT;
