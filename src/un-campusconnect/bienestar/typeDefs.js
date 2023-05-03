@@ -2,7 +2,7 @@ export const bienestarTypeDef = `
 input PublicationInput {
     title: String!
     content_publication: String!
-    author_publication: String!
+    author_publication: String
     publication_date: String!
     image: String!
 }
