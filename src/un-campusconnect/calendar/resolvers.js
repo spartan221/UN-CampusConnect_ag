@@ -17,21 +17,21 @@ const resolvers = {
         
 	},
     Mutation: {
-        createEvent: (_, { Event: { id, description, link, start_time, end_time, satus} }) => {
+        createEvent: (_, { Event: { id, description, link, start_time, end_time, category, satus } }) => {
             return generalRequest({
               url: `${URL}/Event/new`,
               method: 'POST',
-              body: { id, description, link, start_time, end_time, satus }
+              body: { id, description, link, start_time, end_time, category, satus }
             }).then(response => {
               return { message: 'Event added successfully' };
             });
         },
 
-        updateEvent: (_, { id, Event: { id, description, link, start_time, end_time, satus } }) => {
+        updateEvent: (_, { id, Event: { id, description, link, start_time, end_time, category, satus } }) => {
             return generalRequest({
               url: `${URL}/Event/update/${id}`,
               method: 'PUT',
-              body: { id, description, link, start_time, end_time, satus }
+              body: { id, description, link, start_time, end_time, category, satus }
             }).then(response => {
               return { message: 'Event update successfully' };
             });
