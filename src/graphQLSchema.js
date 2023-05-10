@@ -1,8 +1,11 @@
 import merge from 'lodash.merge';
 import GraphQLJSON from 'graphql-type-json';
 import { makeExecutableSchema } from 'graphql-tools';
+import { GraphQLDateTime } from 'graphql-iso-date';
 
 import { mergeSchemas } from './utilities';
+
+import { DateTimeResolver, DateTimeTypeDefinition } from 'graphql-scalars';
 
 import {
 	userTypeDef,
@@ -51,11 +54,12 @@ import calendarResolvers from './un-campusconnect/calendar/resolvers';
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
+		DateTimeTypeDefinition,
 		userTypeDef,
-		callTypeDef ,
+		callTypeDef,
 		bienestarTypeDef,
 		tutorprofileTypeDef,
-		calendarTypeDef
+		calendarTypeDef,
 	],
 	[
 		userQueries,
@@ -78,13 +82,17 @@ const mergedTypeDefs = mergeSchemas(
 // Generate the schema object from your types definition.
 export default makeExecutableSchema({
 	typeDefs: mergedTypeDefs,
-	resolvers: merge(
-		{ JSON: GraphQLJSON }, // allows scalar JSON
-		userResolvers,
-		authResolvers,
-		callResolvers,
-		bienestarResolvers,
-		tutorprofileResolvers,
-		calendarResolvers
-	)
+	resolvers: 
+	{
+		...merge(
+			{ JSON: GraphQLJSON }, // allows scalar JSON
+			userResolvers,
+			authResolvers,
+			callResolvers,
+			bienestarResolvers,
+			tutorprofileResolvers,
+			calendarResolvers,
+		),
+		DateTime: GraphQLDateTime
+	}
 });
