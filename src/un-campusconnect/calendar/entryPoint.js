@@ -1,1 +1,1 @@
-export const entryPoint = 'api/calendar'
+export const entryPoint = ''

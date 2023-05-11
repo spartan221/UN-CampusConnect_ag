@@ -22,6 +22,6 @@ ENV BIENESTAR_MS_URL = un-campusconnect_bienestar_ms
 ENV BIENESTAR_MS_PORT = 80
 ENV RABBIT_MQ_URL = rabbitmq
 ENV CALENDAR_MS_URL=calendar_ms
-ENV CALENDAR_MS_PORT=4000
+ENV Event_MS_PORT=4000
 
 CMD [ "npm", "run", "runServer" ]

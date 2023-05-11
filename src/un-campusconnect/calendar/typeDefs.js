@@ -14,6 +14,10 @@ type Event {
     end_time: DateTime!
     status: Boolean!
 }
+
+type Message1 {
+    message: String!
+}
   
 `;
 
@@ -23,7 +27,7 @@ export const calendarQueries = `
 `;
 
 export const calendarMutations = `
-    createEvent(Event: EventInput!): Event
-    updateEvent(id: String!, Event: EventInput!): Event
-    deleteEvent(id: String!): Event
+    createEvent(Event: EventInput!): Message1
+    updateEvent(id: ID!, Event: EventInput!): Message1
+    deleteEvent(id: String!): Message1
 `;
