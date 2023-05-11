@@ -6,48 +6,63 @@ const URL = `http://${url}:${port}/${entryPoint}`;
 
 const resolvers = {
   Query: {
-    getEvent: (_) => {
-      const response = generalRequest({ url: `${URL}/Event`, method: 'GET' });
-      return response;
+    getEvents: async () => {
+      try {
+        const response = await generalRequest({ url: `${URL}/events`, method: 'GET' });
+        return response;
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to fetch events');
+      }
     },
-    getEventid: (_, { id }) => {
-      const response = generalRequest({ url: `${URL}/Event/${id}`, method: 'GET' });
-      return response;
+    getEventId: async (_, { id }) => {
+      try {
+        const response = await generalRequest({ url: `${URL}/events/${id}`, method: 'GET' });
+        return response;
+      } catch (error) {
+        console.error(error);
+        throw new Error(`Failed to fetch event with ID ${id}`);
+      }
     },
-
   },
   Mutation: {
-    createEvent: (_, { Event: { description, link, start_time, end_time, satus } }) => {
-      return generalRequest({
-        url: `${URL}/Event/new`,
-        method: 'POST',
-        body: { id, description, link, start_time, end_time, satus }
-      }).then(response => {
-        return { message: 'Event added successfully' };
-      });
+    createEvent: async (_, { Event: { description, link, start_time, end_time, status } }) => {
+      try {
+        const response = await generalRequest({
+          url: `${URL}/event`,
+          method: 'POST',
+          body: { description, link, start_time, end_time, status },
+        });
+        return { message: 'Event added successfully', event: response };
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to add event');
+      }
     },
-
-    updateEvent: (_, id, { Event: { description, link, start_time, end_time, satus } }) => {
-      return generalRequest({
-        url: `${URL}/Event/update/${id}`,
-        method: 'PUT',
-        body: { id, description, link, start_time, end_time, satus }
-      }).then(response => {
-        return { message: 'Event update successfully' };
-      });
+    updateEvent: async (_, { Event: { id, description, link, start_time, end_time, status } }) => {
+      try {
+        const response = await generalRequest({
+          url: `${URL}/event`,
+          method: 'PUT',
+          body: { id, description, link, start_time, end_time, status },
+        });
+        return { message: 'Event updated successfully', event: response };
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to update event');
+      }
     },
-
-    deleteEvent: (_, { id }) => {
-      const response = generalRequest({
-        url: `${URL}/Event/delete/${id}`,
-        method: 'DELETE',
-      });
-      console.log(response);
-      return response;
-    }
-
-
-  }
-}
+    deleteEvent: async (_, { id }) => {
+      try {
+        const response = await generalRequest({ url: `${URL}/event/${id}`, method: 'DELETE' });
+        console.log(response);
+        return { message: 'Event deleted successfully' };
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to delete event');
+      }
+    },
+  },
+};
 
 export default resolvers;

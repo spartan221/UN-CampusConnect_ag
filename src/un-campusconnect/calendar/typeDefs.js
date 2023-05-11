@@ -18,8 +18,8 @@ type Event {
 `;
 
 export const calendarQueries = `
-    getEvent: [Event]
-    getEventid(id: String!): Event
+    getEvents: [Event]
+    getEventId(id: String!): Event
 `;
 
 export const calendarMutations = `
