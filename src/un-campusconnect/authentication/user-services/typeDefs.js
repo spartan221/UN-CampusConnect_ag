@@ -4,6 +4,7 @@ export const userTypeDef = `
         username: String!
         email: String!
         role: String!
+        status: String!
     }
     input CreateUserInput {
         username: String!
