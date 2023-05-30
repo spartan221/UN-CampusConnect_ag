@@ -9,6 +9,8 @@ import graphQLSchema from './graphQLSchema';
 
 import { formatErr } from './utilities';
 
+import userRouter  from './rest-routes/user';
+
 const app = new Koa();
 const router = new KoaRouter();
 const PORT = process.env.PORT || 5000;
@@ -42,5 +44,6 @@ router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql' }));
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+app.use(userRouter.routes());
 // eslint-disable-next-line
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
