@@ -6,6 +6,9 @@ export const userTypeDef = `
         role: String!
         status: String!
     }
+    type ExternalUsers {
+        numUsers: Int!
+    }
     input CreateUserInput {
         username: String!
         email: String!
@@ -21,6 +24,7 @@ export const userQueries = `
     getMyInfo: User!
     getUsers: [User]!
     getUserInfo(id: String!): User!
+    getExternalUsers: ExternalUsers!
 `;
 export const userMutations = `
     unsubscribe: String!

@@ -15,6 +15,9 @@ const resolvers = {
 		getUserInfo: (_, { id }) =>
 			generalRequest({ url: `${URL}/${id}` , method:'GET'})
 		,
+		getExternalUsers: (_) =>
+			generalRequest({ url: `${URL}/external`, method:'GET'})
+		,
 	},
 	Mutation: {
 		unsubscribe: (_, args, context) => 
