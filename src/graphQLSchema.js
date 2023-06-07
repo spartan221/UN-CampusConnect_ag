@@ -14,7 +14,6 @@ import {
 } from './un-campusconnect/authentication/user-services/typeDefs';
 
 import {
-	authTypeDef,
 	authQueries,
 	authMutations
 } from './un-campusconnect/authentication/auth-services/typeDefs';
@@ -54,7 +53,6 @@ import calendarResolvers from './un-campusconnect/calendar/resolvers';
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
-		authTypeDef,
 		DateTimeTypeDefinition,
 		userTypeDef,
 		callTypeDef,
