@@ -20,14 +20,13 @@ export async function generalRequest({ url, method, body, fullResponse, token })
 	};
 
 	if (token) {
-		parameters = {
-			...parameters, headers: {
-				'x-access-token': token,
-				'Content-Type': 'application/json'
-			}
+		parameters.headers = {
+			'x-access-token': token,
+			'Content-Type': 'application/json'
 		}
 	}
-	
+
+
 	if (process.env.SHOW_URLS || true) {
 		// eslint-disable-next-line
 		console.log(url);

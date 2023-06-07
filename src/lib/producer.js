@@ -1,7 +1,7 @@
 const amqp = require('amqplib/callback_api');
 
 // connect to RabbitMQ server
-const rabbitMqUrl = process.env.RABBIT_MQ_URL || 'rabbitmq';
+const rabbitMqUrl = process.env.RABBIT_MQ_URL || '127.0.0.1';
 
 export const sendMessageToRabbitMQ = (message) => {
     amqp.connect(`amqp://${rabbitMqUrl}`, function (error0, connection) {
