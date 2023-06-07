@@ -5,7 +5,7 @@ import { GraphQLDateTime } from 'graphql-iso-date';
 
 import { mergeSchemas } from './utilities';
 
-import { DateTimeResolver, DateTimeTypeDefinition } from 'graphql-scalars';
+import { DateTimeTypeDefinition } from 'graphql-scalars';
 
 import {
 	userTypeDef,
@@ -54,6 +54,7 @@ import calendarResolvers from './un-campusconnect/calendar/resolvers';
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
+		authTypeDef,
 		DateTimeTypeDefinition,
 		userTypeDef,
 		callTypeDef,
